@@ -12,7 +12,7 @@ const secwd  = "eyJzdGF0dXMiOjIwMH0="
 var logtofile *log.Logger
 
 type WSMessages struct {
-	Msgid int
+	Msgid int `json:"msgid"`
 }
 func WebSocket(wsmessages WSMessages,wsurl string) bool {
 	logtofile = loglib.Logtofile
