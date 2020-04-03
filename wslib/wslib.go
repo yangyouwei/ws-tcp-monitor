@@ -2,6 +2,7 @@ package wslib
 
 import (
 	"encoding/json"
+	"encoding/base64"
 	"fmt"
 	"github.com/yangyouwei/ws-tcp-monitor/loglib"
 	"golang.org/x/net/websocket"
@@ -30,7 +31,9 @@ func WebSocket(wsmessages WSMessages,wsurl string) bool {
 		fmt.Println("Websocket Connect Fail!")
 		return false
 	}
-	_, err = ws.Write(wsmj)
+	        enwsmeg := base64.StdEncoding.EncodeToString(wsmj)
+        //fmt.Println(enwsmeg)
+        _, err = ws.Write([]byte(enwsmeg))
 	if err != nil {
 		logtofile.Println(err)
 		fmt.Println("Websocket Connect Fail!")
